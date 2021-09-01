@@ -18,27 +18,27 @@
 				<!-- <img src="img/logo.svg" style="width: 180px; margin-top: 10px;"> -->
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li class="logged-in" style="display: none;">
-            <a href="#" class="grey-text modal-trigger" data-target="">Settings</a>
-          </li>
-          <li class="logged-in" style="display: none;">
-            <a href="join.html" class="grey-text">Join Room</a>
-          </li>
-          <li class="logged-in" style="display: none;">
-            <a href="#" class="grey-text modal-trigger" data-target="modal-account">Profile</a>
-          </li>
-          <li class="logged-in" style="display: none;">
-            <a href="#" class="grey-text" id="logout">Logout</a>
-          </li>
-          <li class="logged-in" style="display: none;">
-            <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
-          </li> 
-          <li class="logged-out" style="display: none;">
-            <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
-          </li>
-          <li class="logged-out" style="display: none;">
-            <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
-          </li>
+        <!-- <li class="logged-in" style="display: none;">
+          <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
+        </li> -->
+        <li class="logged-in" style="display: none;">
+          <a href="#" class="grey-text modal-trigger" data-target="">Settings</a>
+        </li>
+        <li class="logged-in" style="display: none;">
+          <a href="join.html" class="grey-text">Join Room</a>
+        </li>
+        <li class="logged-in" style="display: none;">
+          <a href="#" class="grey-text modal-trigger" data-target="modal-account">Profile</a>
+        </li>
+        <li class="logged-in" style="display: none;">
+          <a href="#" class="grey-text" id="logout">Logout</a>
+        </li>
+        <li class="logged-out" style="display: none;">
+          <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+        </li>
+        <li class="logged-out" style="display: none;">
+          <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -55,6 +55,22 @@
         <div class="input-field">
           <input type="password" id="signup-password" required />
           <label for="signup-password">Choose password</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="signup-username" required />
+          <label for="signup-username">Username</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="signup-pronouns" required />
+          <label for="signup-pronouns">Pronouns</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="signup-year" required />
+          <label for="signup-year">Year</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="signup-courses" required />
+          <label for="signup-courses">Courses</label>
         </div>
         <button class="btn yellow darken-2 z-depth-0">Sign up</button>
       </form>
@@ -85,6 +101,25 @@
       <h4>Account details</h4><br />
       <div class="account-details"></div>
       <div class="account-extras"></div>
+    </div>
+  </div>
+
+  <!-- CREATE GUIDE MODAL -->
+  <!---the following code is not needed but if I get rid of it, things breaks-->
+  <div id="modal-create" class="modal">
+    <div class="modal-content">
+      <h4>Create Guide</h4><br />
+      <form id="create-form">
+        <div class="input-field">
+          <input type="text" id="title" required>
+          <label for="title">Guide Title</label>
+        </div>
+        <div class="input-field">
+          <textarea id="content" class="materialize-textarea" required></textarea>
+          <label for="content">Guide Content</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Create</button>
+      </form>
     </div>
   </div>
 
