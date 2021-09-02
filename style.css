@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=DM+Sans:300,400,500,600,700,800,900&display=swap');
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+}
+body
+{
+  min-height: 100vh;
+  background: #25242d;
+}
+#nav {
+    position: relative;
+    background-color: #a195ed; /*Whatever color you want goes here, but in Hexadecimal form*/
+    height: 80px;
+}
+nav
+{
+  position: absolute;
+  top: 0;
+  Left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav ul
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav ul li
+{
+  list-style: none;
+  margin-Left: 20px;
+}
+nav ul li a
+{
+  text-decoration: none;
+  padding: 6px 17px;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 20px;
+}
+nav ul li a:hover
+{
+  background: #c0dff1;
+  color: #1a1a1a;
+}
+nav ul li a.active
+{
+  background: #fff;
+  color: #0a0d30;
+}
