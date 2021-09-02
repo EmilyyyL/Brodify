@@ -4,15 +4,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <title>UNTITLED</title>
 </head>
-<body class="grey lighten-3">
-
+<body>
   <!-- NAVBAR -->
-	<nav class="z-depth-0 grey lighten-4">
-		<div class="nav-wrapper container">
+	<nav class="z-depth-0" id="nav">
+		<div class="nav-wrapper">
 			<a href="#" class="brand-logo">
         <!-- insert our logo below -->
 				<!-- <img src="img/logo.svg" style="width: 180px; margin-top: 10px;"> -->
@@ -22,22 +21,22 @@
           <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
         </li> -->
         <li class="logged-in" style="display: none;">
-          <a href="#" class="grey-text modal-trigger" data-target="">Settings</a>
+          <a href="#" class="modal-trigger" data-target="">Settings</a>
         </li>
         <li class="logged-in" style="display: none;">
-          <a href="join.html" class="grey-text">Join Room</a>
+          <a href="join.html">Join Room</a>
         </li>
         <li class="logged-in" style="display: none;">
-          <a href="#" class="grey-text modal-trigger" data-target="modal-account">Profile</a>
+          <a href="#" class="modal-trigger" data-target="modal-account">Profile</a>
         </li>
         <li class="logged-in" style="display: none;">
-          <a href="#" class="grey-text" id="logout">Logout</a>
+          <a href="#" id="logout">Logout</a>
         </li>
         <li class="logged-out" style="display: none;">
-          <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+          <a href="#" class="modal-trigger" data-target="modal-login">Login</a>
         </li>
         <li class="logged-out" style="display: none;">
-          <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+          <a href="#" class="modal-trigger" data-target="modal-signup">Sign up</a>
         </li>
       </ul>
     </div>
