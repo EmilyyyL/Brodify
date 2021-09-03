@@ -46,7 +46,7 @@ const setupGuides = (data) => {
     });
     guideList.innerHTML = html
   } else {
-    guideList.innerHTML = '<p style="color:white">The homepage, I think the easiest and most efficient way to make our homepage is to put everything as an image here XD</p>';
+    guideList.innerHTML = '<p style="color:white">The homepage XD</p>';
   }
   
 
