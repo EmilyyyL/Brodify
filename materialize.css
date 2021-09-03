@@ -6085,7 +6085,7 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 
 select:focus {
-  outline: 1px solid #c9f3ef;
+  outline: 1px solid #a195ed;
 }
 
 button:focus {
@@ -7134,7 +7134,7 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::before {
 /* Select Field
    ========================================================================== */
 select {
-  display: none;
+  display: block;
 }
 
 select.browser-default {
