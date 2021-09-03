@@ -6,26 +6,30 @@
   box-sizing: border-box;
   font-family: 'DM Sans', sans-serif;
 }
+
 body
 {
   min-height: 100vh;
   background: #25242d;
 }
+
 #nav {
-    position: relative;
-    background-color: #a195ed; /*Whatever color you want goes here, but in Hexadecimal form*/
-    height: 80px;
+  height: 68px;
 }
 nav
 {
-  position: absolute;
+  position: relative;
   top: 0;
   Left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-right: 100px;
+  background-color: #a195ed;
+  padding-top: 2px;
 }
+
 nav ul
 {
   display: flex;
@@ -40,7 +44,7 @@ nav ul li
 nav ul li a
 {
   text-decoration: none;
-  padding: 6px 17px;
+  padding: 0px 17px;
   color: #fff;
   border-radius: 10px;
   font-size: 20px;
@@ -54,4 +58,22 @@ nav ul li a.active
 {
   background: #fff;
   color: #0a0d30;
+}
+
+button
+{
+  background-color: #a195ed;
+  color: #fff;
+  border: none;
+  padding:12px;
+}
+button:hover
+{
+  background: #c0dff1;
+  color: #1a1a1a;
+}
+button:active
+{
+  background-color: #3E1076;
+  color: white;
 }
