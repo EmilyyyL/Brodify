@@ -18,7 +18,7 @@
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li class="logged-in" style="display: none;">
-          <a href="#" class="modal-trigger" data-target="">Settings</a>
+          <a href="#" class="modal-trigger" data-target="modal-settings">Settings</a>
         </li>
         <li class="logged-in" style="display: none;">
           <a href="join.html">Join Room</a>
@@ -38,6 +38,12 @@
       </ul>
     </div>
   </nav>
+
+  <!-- EMAIL VERIFICATION BANNER -->
+  <div class="verify-email-banner" style="display: none;">
+    <img src="grey_x.png" href="#" id="close-x">
+    <p style="display: inline;">Please verify your email. Click <a href="#" id="resend-email-verification">here</a> to resend your verification email.</p>
+  </div>
 
   <!-- SIGN UP MODAL -->
   <!-- To change background colour look for the modal class -->
@@ -104,17 +110,64 @@
           <input type="password" id="login-password" required />
           <label for="login-password">Password</label>
         </div>
+        <a href="#" class="modal-trigger" data-target="modal-forgot-password">Forgot your password?</a> 
+        <br>
+        <br>
         <button class="auth-btn z-depth-0">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FORGOT-PASSWORD MODAL -->
+  <div id="modal-forgot-password" class="modal">
+    <div class="modal-content">
+      <h4>Reset your password</h4>
+      <p>Enter your email and we will send you instructions on how to change your password.</p>
+      <form id="forgot-password-form">
+        <div class="input-field">
+          <input type="email" id="forgot-password-email" required />
+          <label for="forgot-password-email">Email</label>
+        </div>
+        <button class="auth-btn z-depth-0">Send password reset email</button>
       </form>
     </div>
   </div>
 
   <!-- ACCOUNT MODAL -->
   <div id="modal-account" class="modal">
-    <div class="modal-content center-align">
+    <div class="modal-content">
       <h4>Profile</h4><br />
       <div class="account-details"></div>
-      <div class="account-extras"></div>
+    </div>
+  </div>
+
+    <!-- SETTINGS MODAL -->
+    <div id="modal-settings" class="modal">
+      <div class="modal-content">
+        <h4>Settings</h4></br>
+        <div class="account-settings"></div>
+        <br>
+        <a href="#" id="delete-account-btn">Delete account</a><br><br>
+        <button class="auth-btn z-depth-0" id="close-settings">Close settings</button>
+      </div>
+    </div>
+
+  <!-- CHANGE USERNAME MODAL -->
+  <div id="modal-change-username" class="modal">
+    <div class="modal-content">
+      <h4>Change your username</h4>
+      <p>Enter your new username.</p>
+      <form id="change-username-form">
+        <div class="input-field">
+          <input type="text" id="new-username" required />
+          <label for="new-username">New username</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="password-verify">
+          <label for="password-verify">Password</label>
+        </div>
+        <button class="auth-btn z-depth-0">Done</button>
+      </form>
     </div>
   </div>
 
@@ -151,10 +204,10 @@
     db.settings({ timestampsInSnapshots: true });
 </script>
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="materialize.js"></script>
-  <script src="auth/auth.js"></script>
-  <script src="auth/index.js"></script>
+  <!-- JavaScript -->
+  <script src="scripts/materialize.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/index.js"></script>
 </body>
 
 </html>
