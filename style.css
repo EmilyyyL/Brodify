@@ -77,3 +77,34 @@ button:active
   background-color: #3E1076;
   color: white;
 }
+
+.verify-email-banner
+{
+  background-color: red;
+  color: white;
+  padding-left:10px;
+}
+
+#close-x
+{
+  display: inline;
+  width: 10px;
+}
+
+.settings-headings
+{
+  color: #3E1076;
+}
+
+.settings-txt
+{
+  color: rgb(126, 126, 126);
+}
+
+#delete-account-btn
+{
+  color: red;
+  background-color: rgba(255, 0, 0, 0.1);
+  padding: 10px;
+  float: right;
+}
