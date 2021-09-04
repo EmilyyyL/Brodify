@@ -2,4 +2,4 @@
 
 @team, 
 
-code is NOT up to date
+code is up to date
