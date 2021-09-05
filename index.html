@@ -41,7 +41,7 @@
 
   <!-- EMAIL VERIFICATION BANNER -->
   <div class="verify-email-banner" style="display: none;">
-    <img src="grey_x.png" href="#" id="close-x">
+    <img src="images/grey_x.png" href="#" id="close-x">
     <p style="display: inline;">Please verify your email. Click <a href="#" id="resend-email-verification">here</a> to resend your verification email.</p>
   </div>
 
@@ -147,7 +147,8 @@
         <h4>Settings</h4></br>
         <div class="account-settings"></div>
         <br>
-        <a href="#" id="delete-account-btn">Delete account</a><br><br>
+        <a href="#" id="change-password-btn">Change password</a>
+        <a href="#" id="delete-account-btn">Delete account</a><br><br><br>
         <button class="auth-btn z-depth-0" id="close-settings">Close settings</button>
       </div>
     </div>
@@ -163,7 +164,26 @@
           <label for="new-username">New username</label>
         </div>
         <div class="input-field">
-          <input type="password" id="password-verify">
+          <input type="password" id="username-password-verify">
+          <label for="password-verify">Password</label>
+        </div>
+        <button class="auth-btn z-depth-0">Done</button>
+      </form>
+    </div>
+  </div>
+
+   <!-- CHANGE USERNAME MODAL -->
+   <div id="modal-change-email" class="modal">
+    <div class="modal-content">
+      <h4>Change your email</h4>
+      <p>Enter your new email.</p>
+      <form id="change-email-form">
+        <div class="input-field">
+          <input type="email" id="new-email" required />
+          <label for="new-email">New email</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="email-password-verify">
           <label for="password-verify">Password</label>
         </div>
         <button class="auth-btn z-depth-0">Done</button>
@@ -205,7 +225,7 @@
 </script>
 
   <!-- JavaScript -->
-  <script src="scripts/materialize.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="scripts/auth.js"></script>
   <script src="scripts/index.js"></script>
 </body>
