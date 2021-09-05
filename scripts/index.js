@@ -90,13 +90,74 @@ const setupGuides = (data) => {
   }
 };
 
-// settings
+// close settings
 const closeSettings = document.querySelector('#close-settings');
 closeSettings.addEventListener('click', (e) => {
   e.preventDefault();
   const modal = document.querySelector('#modal-settings');
   M.Modal.getInstance(modal).close();
 });
+
+// change username
+// DOESNT WORK :(
+  const changeusernameForm = document.querySelector('#change-username-form');
+  changeusernameForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    var user = firebase.auth().currentUser;
+    var credential = firebase.auth.EmailAuthProvider.credential(
+      firebase.auth().currentUser.email,
+      changeusernameForm['username-password-verify'].value
+    );
+    user.reauthenticateWithCredential(credential).then(cred => {
+      return db.collection('users').doc(cred.user.uid).update({
+        username: changeusernameForm['new-username'].value
+      });
+    }).then(() => {
+      // Update successful.
+      console.log('User Profile Updated Successfully');
+      }).catch(function(error) {
+      console.log('User Profile Update FAILED');
+      // An error happened.
+      });
+    // close the change username modal & reset form
+    const modal = document.querySelector('#modal-change-username');
+    M.Modal.getInstance(modal).close();
+    changeusernameForm.reset();
+  });
+
+// change email
+const changeemailForm = document.querySelector('#change-email-form');
+changeemailForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  var user = firebase.auth().currentUser;
+  var credential = firebase.auth.EmailAuthProvider.credential(
+    firebase.auth().currentUser.email,
+    changeemailForm['email-password-verify'].value
+  );
+  user.reauthenticateWithCredential(credential).then(() => {
+    user.updateEmail(changeemailForm['new-email'].value).then(function() {
+    // Update successful.
+    console.log('email update successful');
+    }).catch(function(error) {
+      // An error happened.
+      console.log('email update FAILED');
+    });
+  });
+  const modal = document.querySelector('#modal-change-email');
+  M.Modal.getInstance(modal).close();
+  changeemailForm.reset();
+});
+
+// change pronouns
+
+// change year
+
+// edit courses
+
+// change password
+
+// delete account
+
 
 // setup materialize components
 document.addEventListener('DOMContentLoaded', function() {
@@ -108,3 +169,4 @@ document.addEventListener('DOMContentLoaded', function() {
   M.Collapsible.init(items);
 
 });
+
