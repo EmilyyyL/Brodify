@@ -108,3 +108,11 @@ button:active
   padding: 10px;
   float: right;
 }
+
+#change-password-btn
+{
+  color: purple;
+  background-color: rgba(140, 0, 255, 0.1);
+  padding: 10px;
+  float: left;
+}
