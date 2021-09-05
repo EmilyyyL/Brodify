@@ -59,7 +59,7 @@ signupForm.addEventListener('submit', (e) => {
       year: signupForm['signup-year'].value,
       courses: signupForm['signup-courses'].value,
       emailVerified: false
-    });
+    }, {merge:true});
   }).then(() => {
     // send email verification
     firebase.auth().currentUser.sendEmailVerification().then(function() {
@@ -120,28 +120,3 @@ forgotpasswordForm.addEventListener('submit', (e) => {
   });
 });
 
-// change username
-// DOESNT WORK :(
-const changeusernameForm = document.querySelector('#change-username-form');
-changeusernameForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  var user = firebase.auth().currentUser;
-  var credential = firebase.auth.EmailAuthProvider.credential(
-    firebase.auth().currentUser.email,
-    changeusernameForm['password-verify'].value
-  );
-  user.reauthenticateWithCredential(credential).then(cred => {
-    return db.collection('users').doc(cred.user.uid).set({
-      username: changeusernameForm['new-username'].value
-    });
-  }).then(() => {
-    // Update successful.
-    console.log('User Profile Updated Successfully');
-    }).catch(function(error) {
-    // An error happened.
-    });
-  // close the change username modal & reset form
-  const modal = document.querySelector('#modal-change-username');
-  M.Modal.getInstance(modal).close();
-  changeusernameForm.reset();
-});
