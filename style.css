@@ -65,6 +65,24 @@ nav ul li a.active
   color: #8982bb;
 }
 
+button
+{
+  background-color: #a195ed;
+  color: #fff;
+  border: none;
+  padding:12px;
+}
+button:hover
+{
+  background: #c0dff1;
+  color: #1a1a1a;
+}
+button:active
+{
+  background-color: #3E1076;
+  color: white;
+}
+
 .verify-email-banner
 {
   background-color: red;
@@ -102,4 +120,18 @@ nav ul li a.active
   background-color: rgba(140, 0, 255, 0.1);
   padding: 10px;
   float: left;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+div.img {
+  background-image: url('images/background.jpg');
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100vw;
+  height: 100vh;
 }
