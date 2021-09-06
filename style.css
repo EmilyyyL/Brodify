@@ -10,11 +10,11 @@
 body
 {
   min-height: 100vh;
-  background: #25242d;
+  background: #b0aace;
 }
 
 #nav {
-  height: 68px;
+  height: 75px;
 }
 nav
 {
@@ -25,57 +25,44 @@ nav
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 100px;
-  background-color: #a195ed;
-  padding-top: 2px;
+  padding-right: 50px;
+  background-color: #9f97d0;
+  padding-top: 20px;
 }
 
 nav ul
 {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 nav ul li
 {
   list-style: none;
   margin-Left: 20px;
+  
 }
 nav ul li a
 {
   text-decoration: none;
-  padding: 0px 17px;
   color: #fff;
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 19px;
+  font-weight: 500;
+  border: 2px solid white;
+  height: 38px;
+  width: 150px;
+  line-height: 33px;
+  text-align: center;
 }
 nav ul li a:hover
 {
-  background: #c0dff1;
-  color: #1a1a1a;
+  background: white;
+  color: #8982bb;
 }
 nav ul li a.active
 {
-  background: #fff;
-  color: #0a0d30;
-}
-
-button
-{
-  background-color: #a195ed;
-  color: #fff;
-  border: none;
-  padding:12px;
-}
-button:hover
-{
-  background: #c0dff1;
-  color: #1a1a1a;
-}
-button:active
-{
-  background-color: #3E1076;
-  color: white;
+  background: white;
+  color: #8982bb;
 }
 
 .verify-email-banner
