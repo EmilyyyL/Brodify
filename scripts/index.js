@@ -101,6 +101,30 @@ closeSettings.addEventListener('click', (e) => {
 // change username
 // DOESNT WORK :(
   const changeusernameForm = document.querySelector('#change-username-form');
+  // changeusernameForm.addEventListener('submit', (e) => {
+  //   e.preventDefault();
+  //   var user = firebase.auth().currentUser;
+  //   var credential = firebase.auth.EmailAuthProvider.credential(
+  //     firebase.auth().currentUser.email,
+  //     changeusernameForm['username-password-verify'].value
+  //   );
+  //   user.reauthenticateWithCredential(credential).then(cred => {
+  //     return db.collection('users').doc(cred.user.uid).update({
+  //       username: changeusernameForm['new-username'].value
+  //     });
+  //   }).then(() => {
+  //     // Update successful.
+  //     console.log('User Profile Updated Successfully');
+  //     }).catch(function(error) {
+  //     console.log('User Profile Update FAILED');
+  //     // An error happened.
+  //     });
+  //   // close the change username modal & reset form
+  //   const modal = document.querySelector('#modal-change-username');
+  //   M.Modal.getInstance(modal).close();
+  //   changeusernameForm.reset();
+  // });
+
   changeusernameForm.addEventListener('submit', (e) => {
     e.preventDefault();
     var user = firebase.auth().currentUser;
@@ -108,22 +132,30 @@ closeSettings.addEventListener('click', (e) => {
       firebase.auth().currentUser.email,
       changeusernameForm['username-password-verify'].value
     );
-    user.reauthenticateWithCredential(credential).then(cred => {
-      return db.collection('users').doc(cred.user.uid).update({
+    user.reauthenticateWithCredential(credential).then(function(userCredential) {
+      db.collection('users').doc(cred.user.uid).update({
         username: changeusernameForm['new-username'].value
-      });
-    }).then(() => {
-      // Update successful.
-      console.log('User Profile Updated Successfully');
-      }).catch(function(error) {
-      console.log('User Profile Update FAILED');
-      // An error happened.
-      });
-    // close the change username modal & reset form
-    const modal = document.querySelector('#modal-change-username');
-    M.Modal.getInstance(modal).close();
-    changeusernameForm.reset();
+      })
+      // .then(function() {
+      //   // Update successful.
+      //   console.log('username update successful');
+      //   location.reload();
+      // }).catch(function(error) {
+      //   // An error happened.
+      //   console.log('username update FAILED');
+      // });
+      const modal = document.querySelector('#modal-change-username');
+      M.Modal.getInstance(modal).close();
+      changeemailForm.reset();
+      console.log('here');
+    })
+    .catch(function(error) {
+      // An error happened with reauthenication.
+        console.log('reauthenication FAILED');
+    });
   });
+
+
 
 // change email
 const changeemailForm = document.querySelector('#change-email-form');
@@ -134,18 +166,23 @@ changeemailForm.addEventListener('submit', (e) => {
     firebase.auth().currentUser.email,
     changeemailForm['email-password-verify'].value
   );
-  user.reauthenticateWithCredential(credential).then(() => {
-    user.updateEmail(changeemailForm['new-email'].value).then(function() {
-    // Update successful.
-    console.log('email update successful');
-    }).catch(function(error) {
-      // An error happened.
-      console.log('email update FAILED');
-    });
+  user.reauthenticateWithCredential(credential).then(function(userCredential) {
+      user.updateEmail(changeemailForm['new-email'].value).then(function() {
+      // Update successful.
+      console.log('email update successful');
+      location.reload();
+      }).catch(function(error) {
+        // An error happened.
+        console.log('email update FAILED');
+      });
+    const modal = document.querySelector('#modal-change-email');
+    M.Modal.getInstance(modal).close();
+    changeemailForm.reset();
+  })
+  .catch(function(error) {
+    // An error happened with reauthenication.
+      console.log('reauthenication FAILED');
   });
-  const modal = document.querySelector('#modal-change-email');
-  M.Modal.getInstance(modal).close();
-  changeemailForm.reset();
 });
 
 // change pronouns
