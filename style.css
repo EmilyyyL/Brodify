@@ -202,3 +202,8 @@ p1 {
   color: #353247 !important;
   border-color: #ffe496 !important;
 }
+
+.modal
+{
+  z-index: 10000 !important;
+}
