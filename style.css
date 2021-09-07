@@ -14,7 +14,7 @@ body
 }
 
 #nav {
-  height: 80px;
+  height: 88px;
   z-index: 9999;
 }
 nav
@@ -26,7 +26,7 @@ nav
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 50px;
+  padding-right: 60px;
   background-color: #9f97d0;
   padding-top: 23px;
 }
@@ -47,12 +47,12 @@ nav ul li a
   text-decoration: none;
   color: #fff;
   border-radius: 10px;
-  font-size: 19px;
+  font-size: 23px;
   font-weight: 500;
-  border: 2px solid white;
-  height: 38px;
-  width: 150px;
-  line-height: 33px;
+  border: 3px solid white;
+  height: 42px;
+  width: 170px;
+  line-height: 35px;
   text-align: center;
 }
 nav ul li a:hover
@@ -138,15 +138,15 @@ div.background {
   width: 100vw;
   height: 100vh;
   bottom: 20px;
-  right: 10px;
+  right: 20px;
   z-index: 1;
 }
 
 .bear {
   position: fixed;
-  bottom: -50px;
-  left: -10px;
-  width: 420px;
+  bottom: -70px;
+  left: -22px;
+  width: 450px;
   z-index: 2;
 }
 
@@ -156,7 +156,7 @@ h1 {
   z-index: 998;
   padding-left: 290px;
   padding-top: 26px;
-  font-size: 70px !important;
+  font-size: 80px !important;
 }
 
 p1 {
@@ -164,10 +164,10 @@ p1 {
   color: #f8f8f8;
   text-align: center;
   z-index: 1000;
-  padding-left: 230px;
+  padding-left: 250px;
   padding-top: 170px;
-  font-size: 150%;
-  inline-size: 760px;
+  font-size: 140%;
+  inline-size: 750px;
   overflow-wrap: break-word;
   text-align: left;
   font-weight: bold;
@@ -178,13 +178,13 @@ p1 {
   text-decoration: none;
   background-color: #353247;
   color: #ffe496;
-  border-radius: 22px;
+  border-radius: 25px;
   font-size: 25px;
   font-weight: 500;
   border: 2px;
   height: 50px;
   width: 200px;
-  line-height: 8px;
+  line-height: 9px;
   text-align: center;
   top: 58%;
   left: 30%;
