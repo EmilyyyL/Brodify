@@ -2,9 +2,7 @@
 auth.onAuthStateChanged(user => {
   const verifyEmailBanner = document.querySelectorAll('.verify-email-banner');
   if (user) {
-    db.collection('guides').onSnapshot(snapshot => {
       setupUI(user);
-    }, err => console.log(err.message));
     // check if user email is verified
     // if user is not verified, there is a banner asking the user to verify their email
     // or send a new verifcation email. 
@@ -59,7 +57,7 @@ auth.onAuthStateChanged(user => {
         year: signupForm['signup-year'].value,
         courses: signupForm['signup-courses'].value,
         emailVerified: false
-      }, {merge:true});
+      });
     }).then(() => {
       // send email verification
       firebase.auth().currentUser.sendEmailVerification().then(function() {
