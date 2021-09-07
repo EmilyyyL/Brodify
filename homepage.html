@@ -6,7 +6,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="materialize.css">
-  <title>UNTITLED</title>
+  <title>Brodify</title>
 </head>
 <body id="logged-in-homepage">
   <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -44,8 +44,8 @@
       <h4>Settings</h4></br>
       <div class="account-settings"></div>
       <br>
-      <a href="#" id="change-password-btn">Change password</a>
-      <a href="#" id="delete-account-btn">Delete account</a><br><br><br>
+      <a href="#" id="change-password-btn" class="modal-trigger" data-target="modal-change-password">Change password</a>
+      <a href="#" id="delete-account-btn" class="modal-trigger" data-target="modal-delete-account">Delete account</a><br><br><br>
       <button class="auth-btn z-depth-0" id="close-settings">Close settings</button>
     </div>
   </div>
@@ -88,11 +88,23 @@
     </div>
   </div>
 
-  <!-- GUIDE LIST -->
-  <div class="container" style="margin-top: 40px;">
-    <ul class="collapsible z-depth-0 guides" style="border: none;">
-
-    </ul>
+  <!-- CHANGE PASSWORD MODAL -->
+  <div id="modal-change-password" class="modal">
+    <div class="modal-content">
+      <h4>Change your password</h4>
+      <p>Enter your password.</p>
+      <form id="change-password-form">
+        <div class="input-field">
+          <input type="password" id="current-password-verify">
+          <label for="current-password-verify">Current Password</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="new-password" required />
+          <label for="new-password">New password</label>
+        </div>
+        <button class="auth-btn z-depth-0">Change password</button>
+      </form>
+    </div>
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
