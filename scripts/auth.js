@@ -3,7 +3,6 @@ auth.onAuthStateChanged(user => {
   const verifyEmailBanner = document.querySelectorAll('.verify-email-banner');
   if (user) {
     db.collection('guides').onSnapshot(snapshot => {
-      setupGuides(snapshot.docs);
       setupUI(user);
     }, err => console.log(err.message));
     // check if user email is verified
@@ -35,6 +34,13 @@ auth.onAuthStateChanged(user => {
         verifyEmailBanner.forEach(item => item.style.display = 'none');
       });
     }
+    // logout
+    const logout = document.querySelector('#logout');
+    logout.addEventListener('click', (e) => {
+      e.preventDefault();
+      auth.signOut();
+      window.location = 'index.html';
+    });
   } else {
   // signup
   const signupForm = document.querySelector('#signup-form');
@@ -107,15 +113,6 @@ auth.onAuthStateChanged(user => {
     });
   });
     setupUI();
-    setupGuides([]);
     verifyEmailBanner.forEach(item => item.style.display = 'none');
   }
-});
-
-// logout
-const logout = document.querySelector('#logout');
-logout.addEventListener('click', (e) => {
-  e.preventDefault();
-  auth.signOut();
-  window.location = 'index.html';
 });
