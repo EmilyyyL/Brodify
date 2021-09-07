@@ -1,0 +1,131 @@
+<html lang ="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="materialize.css">
+  <title>UNTITLED</title>
+</head>
+<body id="logged-in-homepage">
+  <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <li>
+      <a href="#" class="modal-trigger" data-target="modal-settings">Settings</a>
+    </li>
+    <li>
+      <a href="join.html">Join Room</a>
+    </li>
+    <li>
+      <a href="#" class="modal-trigger" data-target="modal-account">Profile</a>
+    </li>
+    <li>
+      <a href="#" id="logout">Logout</a>
+    </li>
+  </ul>
+
+  <!-- EMAIL VERIFICATION BANNER -->
+  <div class="verify-email-banner" style="display: none;">
+    <img src="images/grey_x.png" href="#" id="close-x">
+    <p style="display: inline;">Please verify your email. Click <a href="#" id="resend-email-verification">here</a> to resend your verification email.</p>
+  </div>
+
+  <!-- ACCOUNT MODAL -->
+  <div id="modal-account" class="modal">
+    <div class="modal-content">
+      <h4>Profile</h4><br />
+      <div class="account-details"></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div id="modal-settings" class="modal">
+    <div class="modal-content">
+      <h4>Settings</h4></br>
+      <div class="account-settings"></div>
+      <br>
+      <a href="#" id="change-password-btn">Change password</a>
+      <a href="#" id="delete-account-btn">Delete account</a><br><br><br>
+      <button class="auth-btn z-depth-0" id="close-settings">Close settings</button>
+    </div>
+  </div>
+
+  <!-- CHANGE USERNAME MODAL -->
+  <div id="modal-change-username" class="modal">
+    <div class="modal-content">
+      <h4>Change your username</h4>
+      <p>Enter your new username.</p>
+      <form id="change-username-form">
+        <div class="input-field">
+          <input type="text" id="new-username" required />
+          <label for="new-username">New username</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="username-password-verify">
+          <label for="username-password-verify">Password</label>
+        </div>
+        <button class="auth-btn z-depth-0">Change username</button>
+      </form>
+    </div>
+  </div>
+
+   <!-- CHANGE EMAIL MODAL -->
+   <div id="modal-change-email" class="modal">
+    <div class="modal-content">
+      <h4>Change your email</h4>
+      <p>Enter your new email.</p>
+      <form id="change-email-form">
+        <div class="input-field">
+          <input type="email" id="new-email" required />
+          <label for="new-email">New email</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="email-password-verify">
+          <label for="email-password-verify">Password</label>
+        </div>
+        <button class="auth-btn z-depth-0">Change email</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- GUIDE LIST -->
+  <div class="container" style="margin-top: 40px;">
+    <ul class="collapsible z-depth-0 guides" style="border: none;">
+
+    </ul>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+
+  <script>
+    // Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDrzd3WxCZoNGRb7raEkzEeYHXv8oh1doQ",
+      authDomain: "personal-project-2021.firebaseapp.com",
+      projectId: "personal-project-2021",
+      storageBucket: "personal-project-2021.appspot.com",
+      messagingSenderId: "836140640649",
+      appId: "1:836140640649:web:fa8a605344d8c461589958",
+      measurementId: "G-BPSV43KV2G"
+    };
+    // Initialize Firebase
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+      
+    // make auth and firestore references
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+  
+    // update firestore settings
+      db.settings({ timestampsInSnapshots: true });
+  </script>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/index.js"></script>
+</body>
+</html>
