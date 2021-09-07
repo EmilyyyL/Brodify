@@ -7,6 +7,7 @@ const accountSettings = document.querySelector('.account-settings');
 
 const setupUI = (user) => {
   if (user) {
+    document.getElementById('logged-in-homepage').style.visibility = "visible";
     // account info
     db.collection('users').doc(user.uid).get().then(doc => {
       const html = `
@@ -206,4 +207,3 @@ document.addEventListener('DOMContentLoaded', function() {
   M.Collapsible.init(items);
 
 });
-
