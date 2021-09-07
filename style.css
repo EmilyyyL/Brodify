@@ -72,7 +72,11 @@ button
   background-color: #a195ed;
   color: #fff;
   border: none;
-  padding:12px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 10px;
 }
 button:hover
 {
@@ -186,7 +190,7 @@ p1 {
   width: 200px;
   line-height: 9px;
   text-align: center;
-  top: 58%;
+  top: 55%;
   left: 30%;
   position: absolute;
   z-index: 990;
@@ -194,7 +198,7 @@ p1 {
 
 .start_button:hover
 {
-  background: white !important;
-  color: #8982bb !important;
-  border-color: white !important;
+  background: #ffe496 !important;
+  color: #353247 !important;
+  border-color: #ffe496 !important;
 }
