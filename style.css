@@ -14,7 +14,7 @@ body
 }
 
 #nav {
-  height: 75px;
+  height: 80px;
   z-index: 9999;
 }
 nav
@@ -28,7 +28,7 @@ nav
   align-items: center;
   padding-right: 50px;
   background-color: #9f97d0;
-  padding-top: 20px;
+  padding-top: 23px;
 }
 
 nav ul
@@ -57,8 +57,9 @@ nav ul li a
 }
 nav ul li a:hover
 {
-  background: white;
-  color: #8982bb;
+  background: white !important;
+  color: #8982bb !important;
+  border-color: white !important;
 }
 nav ul li a.active
 {
@@ -137,19 +138,63 @@ div.background {
   width: 100vw;
   height: 100vh;
   bottom: 20px;
+  right: 10px;
   z-index: 1;
 }
 
-div.bear {
+.bear {
   position: fixed;
-  top: 0px;
-  left: 20px;
-  background-image: url('images/homepage_bear.png');
-  background-position: left bottom;
-  background-repeat: no-repeat;
-  /* width: 50vw;
-  height: 100vh; */
-  width: 100%;
-  height: 100%;
+  bottom: -50px;
+  left: -10px;
+  width: 420px;
   z-index: 2;
+}
+
+h1 {
+  position: absolute;
+  color: #8982bb;
+  z-index: 998;
+  padding-left: 290px;
+  padding-top: 26px;
+  font-size: 70px !important;
+}
+
+p1 {
+  position: absolute;
+  color: #f8f8f8;
+  text-align: center;
+  z-index: 1000;
+  padding-left: 230px;
+  padding-top: 170px;
+  font-size: 150%;
+  inline-size: 760px;
+  overflow-wrap: break-word;
+  text-align: left;
+  font-weight: bold;
+}
+
+.start_button
+{
+  text-decoration: none;
+  background-color: #353247;
+  color: #ffe496;
+  border-radius: 22px;
+  font-size: 25px;
+  font-weight: 500;
+  border: 2px;
+  height: 50px;
+  width: 200px;
+  line-height: 8px;
+  text-align: center;
+  top: 58%;
+  left: 30%;
+  position: absolute;
+  z-index: 990;
+}
+
+.start_button:hover
+{
+  background: white !important;
+  color: #8982bb !important;
+  border-color: white !important;
 }
