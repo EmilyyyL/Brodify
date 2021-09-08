@@ -12,6 +12,7 @@ const setupUI = (user) => {
         <div>${doc.data().pronouns}</div>
         <div>${doc.data().year}</div>
         <div>${doc.data().courses}</div>
+        <div>${doc.data().bio}</div>
       `;
       accountDetails.innerHTML = html;
 
@@ -34,7 +35,7 @@ const setupUI = (user) => {
           <p class="settings-headings">Pronouns</p>
           <p class="settings-txt">
             ${doc.data().pronouns} 
-            <a href="#" class="settings-btn modal-trigger" data-target="modal-change-pronouns">Change pronouns</a>
+            <a href="#" class="settings-btn modal-trigger" data-target="modal-change-pronouns">Edit pronouns</a>
           </p> 
         </div>
         <div> 
@@ -48,7 +49,14 @@ const setupUI = (user) => {
           <p class="settings-headings">Courses</p>
           <p class="settings-txt"> 
             ${doc.data().courses} 
-            <a href="#" class="settings-btn modal-trigger" data-target="change-courses">Edit courses</a>
+            <a href="#" class="settings-btn modal-trigger" data-target="modal-change-courses">Edit courses</a>
+          </p> 
+        </div>
+        <div> 
+          <p class="settings-headings">Bio</p>
+          <p class="settings-txt"> 
+            ${doc.data().bio} 
+            <a href="#" class="settings-btn modal-trigger" data-target="modal-change--bio">Edit Bio</a>
           </p> 
         </div>
       `;
@@ -103,6 +111,9 @@ const setupUI = (user) => {
     // edit courses
     // TBC
 
+    // edit bio
+    // TBC
+
     // change password
     const changepasswordForm = document.querySelector('#change-password-form');
     changepasswordForm.addEventListener('submit', (e) => {
@@ -129,10 +140,7 @@ const setupUI = (user) => {
         // An error happened with reauthenication.
           console.log('reauthenication FAILED');
       });
-    });
-
-    // delete account
-    
+    });    
   }
 };
 
@@ -196,6 +204,33 @@ const setupUI = (user) => {
       // });
   
 
+      // delete account
+    // const deleteaccountForm = document.querySelector('#delete-account-form');
+    // deleteaccountForm.addEventListener('submit', (e) => {
+    //   e.preventDefault();
+    //   var user = firebase.auth().currentUser;
+    //   var credential = firebase.auth.EmailAuthProvider.credential(
+    //     firebase.auth().currentUser.email,
+    //     deleteaccountForm['delete-password-verify'].value
+    //   );
+    //   user.reauthenticateWithCredential(credential).then(function(credential) {
+    //     db.collection("users").doc(credential.user.uid).delete() // THIS LINE DOES NOT WORK
+    //     // Remember to delete all subcollections
+    //     user.delete().then(function() {
+    //       const modal = document.querySelector('#modal-delete-account');
+    //       M.Modal.getInstance(modal).close();
+    //       deleteaccountForm.reset();
+    //       window.location = 'index.html'
+    //     }).catch(function(error) {
+    //         console.log('delete user FAILED');
+    //     });
+    //   })
+    //   .catch(function(error) {
+    //     // An error happened with reauthenication.
+    //       console.log('reauthenication FAILED');
+    //   });
+    // });
+
   // setup materialize components
   document.addEventListener('DOMContentLoaded', function() {
 
@@ -206,3 +241,4 @@ const setupUI = (user) => {
     M.Collapsible.init(items);
 
   });
+  
