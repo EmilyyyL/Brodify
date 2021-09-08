@@ -56,6 +56,7 @@ auth.onAuthStateChanged(user => {
         pronouns: signupForm['signup-pronouns'].value,
         year: signupForm['signup-year'].value,
         courses: signupForm['signup-courses'].value,
+        bio:signupForm['signup-bio'].value,
         emailVerified: false
       });
     }).then(() => {
