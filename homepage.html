@@ -9,7 +9,7 @@
   <title>Brodify</title>
 </head>
 <body id="logged-in-homepage">
-  <ul id="nav-mobile" class="right hide-on-med-and-down">
+  <ul>
     <li>
       <a href="#" class="modal-trigger" data-target="modal-settings">Settings</a>
     </li>
@@ -88,15 +88,59 @@
     </div>
   </div>
 
+  <!-- CHANGE PRONOUNS MODAL -->
+  <div id="modal-change-pronouns" class="modal">
+    <div class="modal-content">
+      <h4>Change your pronouns</h4>
+      <p>Enter your pronouns.</p>
+      <form id="change-pronouns-form">
+        <div class="input-field">
+          <label for="new-pronouns">Pronouns</label>
+            <input type="text" list="pronouns" id="new-pronouns" required />
+            <datalist id="pronouns">
+              <option value="He/him">
+              <option value="She/her">
+              <option value="They/them">
+              <option value="">
+            </datalist>
+        </div>
+        <button class="auth-btn z-depth-0">Change pronouns</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CHANGE YEAR MODAL -->
+  <div id="modal-change-year" class="modal">
+    <div class="modal-content">
+      <h4>Change your year</h4>
+      <p>Choose your year.</p>
+      <form id="change-year-form">
+        <div>
+          <label for="new-year">Year:</label>
+          <select id="new-year" required>
+            <option value="">Select your year</option>
+            <option value="1st year">1st year</option>
+            <option value="2nd year">2nd year</option>
+            <option value="3rd year">3rd year</option>
+            <option value="4th year">4th year</option>
+            <option value="5th year or higher">5th year or higher</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <button class="auth-btn z-depth-0">Change year</button>
+      </form>
+    </div>
+  </div>
+
   <!-- CHANGE PASSWORD MODAL -->
   <div id="modal-change-password" class="modal">
     <div class="modal-content">
       <h4>Change your password</h4>
-      <p>Enter your password.</p>
+      <p>Enter your current password and then your new password.</p>
       <form id="change-password-form">
         <div class="input-field">
           <input type="password" id="current-password-verify">
-          <label for="current-password-verify">Current Password</label>
+          <label for="current-password-verify">Current password</label>
         </div>
         <div class="input-field">
           <input type="password" id="new-password" required />
@@ -106,6 +150,21 @@
       </form>
     </div>
   </div>
+
+    <!-- DELETE ACCOUNT MODAL -->
+    <div id="modal-delete-account" class="modal">
+      <div class="modal-content">
+        <h4>Delete your account</h4>
+        <p>Are you sure you want to delete this account? This action cannot be undone. You will be logged out immediately and never be able to access this account again.</p>
+        <form id="delete-account-form">
+          <div class="input-field">
+            <input type="password" id="delete-password-verify">
+            <label for="delete-password-verify">Password</label>
+          </div>
+          <button class="auth-btn z-depth-0">Delete account</button>
+        </form>
+      </div>
+    </div>
 
   <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
