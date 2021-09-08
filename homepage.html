@@ -132,6 +132,36 @@
     </div>
   </div>
 
+  <!-- CHANGE COURSES MODAL -->
+  <div id="modal-change-courses" class="modal">
+    <div class="modal-content">
+      <h4>Edit your courses</h4>
+      <p>Enter your courses.</p>
+      <form id="change-courses-form">
+        <div class="input-field">
+          <input type="text" id="new-courses" required />
+          <label for="new-courses">Courses</label>
+        </div>
+        <button class="auth-btn z-depth-0">Change courses</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CHANGE BIO MODAL -->
+  <div id="modal-change-bio" class="modal">
+    <div class="modal-content">
+      <h4>Edit your bio</h4>
+      <p>Bio</p>
+      <form id="change-bio-form">
+        <div class="input-field">
+          <input type="text" id="new-bio" required />
+          <label for="new-bio">Bio</label>
+        </div>
+        <button class="auth-btn z-depth-0">Change bio</button>
+      </form>
+    </div>
+  </div>
+
   <!-- CHANGE PASSWORD MODAL -->
   <div id="modal-change-password" class="modal">
     <div class="modal-content">
@@ -189,9 +219,7 @@
     // make auth and firestore references
       const auth = firebase.auth();
       const db = firebase.firestore();
-  
-    // update firestore settings
-      db.settings({ timestampsInSnapshots: true });
+
   </script>
 
   <!-- JavaScript -->
