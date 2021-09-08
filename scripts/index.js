@@ -35,7 +35,7 @@ const setupUI = (user) => {
           <p class="settings-headings">Pronouns</p>
           <p class="settings-txt">
             ${doc.data().pronouns} 
-            <a href="#" class="settings-btn modal-trigger" data-target="modal-change-pronouns">Edit pronouns</a>
+            <a href="#" class="settings-btn modal-trigger" data-target="modal-change-pronouns">Change pronouns</a>
           </p> 
         </div>
         <div> 
@@ -49,14 +49,14 @@ const setupUI = (user) => {
           <p class="settings-headings">Courses</p>
           <p class="settings-txt"> 
             ${doc.data().courses} 
-            <a href="#" class="settings-btn modal-trigger" data-target="modal-change-courses">Edit courses</a>
+            <a href="#" class="settings-btn modal-trigger" data-target="modal-change-courses">Change courses</a>
           </p> 
         </div>
         <div> 
           <p class="settings-headings">Bio</p>
           <p class="settings-txt"> 
             ${doc.data().bio} 
-            <a href="#" class="settings-btn modal-trigger" data-target="modal-change--bio">Edit Bio</a>
+            <a href="#" class="settings-btn modal-trigger" data-target="modal-change-bio">Change Bio</a>
           </p> 
         </div>
       `;
@@ -72,7 +72,31 @@ const setupUI = (user) => {
     });
 
     // change username
-    // TBC
+    const changeusernameForm = document.querySelector('#change-username-form');
+    changeusernameForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      var user = firebase.auth().currentUser;
+      var credential = firebase.auth.EmailAuthProvider.credential(
+        firebase.auth().currentUser.email,
+        changeusernameForm['username-password-verify'].value
+      );
+      user.reauthenticateWithCredential(credential).then(function(cred) {
+        db.collection('users').doc(cred.user.uid).update({
+          username: changeusernameForm['new-username'].value
+        })
+        .then(function() {
+          // Update successful.
+          location.reload();
+        }).catch(function(error) {
+          // An error happened.
+          console.log('username update FAILED');
+        });
+      })
+      .catch(function(error) {
+        // An error happened with reauthenication.
+          console.log('reauthenication FAILED');
+      });
+    });
 
     // change email
     const changeemailForm = document.querySelector('#change-email-form');
@@ -92,9 +116,6 @@ const setupUI = (user) => {
             // An error happened.
             console.log('email update FAILED');
           });
-        const modal = document.querySelector('#modal-change-email');
-        M.Modal.getInstance(modal).close();
-        changeemailForm.reset();
       })
       .catch(function(error) {
         // An error happened with reauthenication.
@@ -103,16 +124,72 @@ const setupUI = (user) => {
     });
 
     // change pronouns
-    // TBC
+    const changepronounsForm = document.querySelector('#change-pronouns-form');
+    changepronounsForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      var user = firebase.auth().currentUser;
+      db.collection('users').doc(user.uid).update({
+        pronouns: changepronounsForm['new-pronouns'].value
+      })
+      .then(function() {
+        // Update successful.
+        location.reload();
+      }).catch(function(error) {
+        // An error happened.
+        console.log('username update FAILED');
+      });
+    })
 
     // change year
-    // TBC
+    const changeyearForm = document.querySelector('#change-year-form');
+    changeyearForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      var user = firebase.auth().currentUser;
+      db.collection('users').doc(user.uid).update({
+        year: changeyearForm['new-year'].value
+      })
+      .then(function() {
+        // Update successful.
+        location.reload();
+      }).catch(function(error) {
+        // An error happened.
+        console.log('year update FAILED');
+      });
+    })
 
     // edit courses
-    // TBC
+    const changecoursesForm = document.querySelector('#change-courses-form');
+    changecoursesForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      var user = firebase.auth().currentUser;
+      db.collection('users').doc(user.uid).update({
+        courses: changecoursesForm['new-courses'].value
+      })
+      .then(function() {
+        // Update successful.
+        location.reload();
+      }).catch(function(error) {
+        // An error happened.
+        console.log('courses update FAILED');
+      });
+    })
 
     // edit bio
-    // TBC
+    const changebioForm = document.querySelector('#change-bio-form');
+    changebioForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      var user = firebase.auth().currentUser;
+      db.collection('users').doc(user.uid).update({
+        bio: changebioForm['new-bio'].value
+      })
+      .then(function() {
+        // Update successful.
+        location.reload();
+      }).catch(function(error) {
+        // An error happened.
+        console.log('bio update FAILED');
+      });
+    })
 
     // change password
     const changepasswordForm = document.querySelector('#change-password-form');
@@ -132,76 +209,19 @@ const setupUI = (user) => {
             // An error happened.
             console.log('password update FAILED');
           });
-        const modal = document.querySelector('#modal-change-password');
-        M.Modal.getInstance(modal).close();
-        changepasswordForm.reset();
       })
       .catch(function(error) {
         // An error happened with reauthenication.
           console.log('reauthenication FAILED');
       });
-    });    
+    }); 
+    
+    // Delete account
   }
 };
 
-  
 
-    // change username
-    // DOESNT WORK :(
-      // const changeusernameForm = document.querySelector('#change-username-form');
-      // changeusernameForm.addEventListener('submit', (e) => {
-      //   e.preventDefault();
-      //   var user = firebase.auth().currentUser;
-      //   var credential = firebase.auth.EmailAuthProvider.credential(
-      //     firebase.auth().currentUser.email,
-      //     changeusernameForm['username-password-verify'].value
-      //   );
-      //   user.reauthenticateWithCredential(credential).then(cred => {
-      //     return db.collection('users').doc(cred.user.uid).update({
-      //       username: changeusernameForm['new-username'].value
-      //     });
-      //   }).then(() => {
-      //     // Update successful.
-      //     console.log('User Profile Updated Successfully');
-      //     }).catch(function(error) {
-      //     console.log('User Profile Update FAILED');
-      //     // An error happened.
-      //     });
-      //   // close the change username modal & reset form
-      //   const modal = document.querySelector('#modal-change-username');
-      //   M.Modal.getInstance(modal).close();
-      //   changeusernameForm.reset();
-      // });
 
-      // changeusernameForm.addEventListener('submit', (e) => {
-      //   e.preventDefault();
-      //   var user = firebase.auth().currentUser;
-      //   var credential = firebase.auth.EmailAuthProvider.credential(
-      //     firebase.auth().currentUser.email,
-      //     changeusernameForm['username-password-verify'].value
-      //   );
-      //   user.reauthenticateWithCredential(credential).then(function(userCredential) {
-      //     db.collection('users').doc(cred.user.uid).update({
-      //       username: changeusernameForm['new-username'].value
-      //     })
-      //     // .then(function() {
-      //     //   // Update successful.
-      //     //   console.log('username update successful');
-      //     //   location.reload();
-      //     // }).catch(function(error) {
-      //     //   // An error happened.
-      //     //   console.log('username update FAILED');
-      //     // });
-      //     const modal = document.querySelector('#modal-change-username');
-      //     M.Modal.getInstance(modal).close();
-      //     changeemailForm.reset();
-      //     console.log('here');
-      //   })
-      //   .catch(function(error) {
-      //     // An error happened with reauthenication.
-      //       console.log('reauthenication FAILED');
-      //   });
-      // });
   
 
       // delete account
