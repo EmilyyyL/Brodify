@@ -57,9 +57,14 @@ auth.onAuthStateChanged(user => {
         year: signupForm['signup-year'].value,
         courses: signupForm['signup-courses'].value,
         bio:signupForm['signup-bio'].value,
+        level: 0,
         emailVerified: false
       });
     }).then(() => {
+      db.collection('users').doc(firebase.auth().currentUser.uid).collection('tasks').add({
+        task: 'name of task',
+        completed: false
+      });
       // send email verification
       firebase.auth().currentUser.sendEmailVerification().then(function() {
         // Email sent.
