@@ -2,6 +2,10 @@
 auth.onAuthStateChanged(user => {
   const verifyEmailBanner = document.querySelectorAll('.verify-email-banner');
   if (user) {
+    if (window.location.pathname == '/index.html') {
+      auth.signOut();
+      location.reload();
+    }
       setupUI(user);
     // check if user email is verified
     // if user is not verified, there is a banner asking the user to verify their email
