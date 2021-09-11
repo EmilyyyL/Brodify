@@ -78,6 +78,7 @@ button
   padding-bottom: 14px;
   border-radius: 10px;
 }
+
 button:hover
 {
   background: #c0dff1;
@@ -206,4 +207,37 @@ p1 {
 .modal
 {
   z-index: 10000 !important;
+}
+
+.semicircle
+{
+  position: absolute;
+  z-index: 10;
+}
+
+.centre-image
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#logged-in-homepage
+{
+  background-color: #9F97C9;
+}
+
+.circle-btn
+{
+  all:unset;
+  background-color: #fae8b3;
+  border-radius: 100%;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  border: solid;
+  border-color: #f8f8f8;
+  border-width: 2px;
+  color: rgb(111, 59, 172);
+  font-weight: 1000;
 }
