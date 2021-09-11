@@ -9,9 +9,9 @@
   <title>Brodify</title>
 </head>
 <body id="logged-in-homepage">
-  <ul>
+  <!-- <ul>
     <li>
-      <a href="#" class="modal-trigger" data-target="modal-settings">Settings</a>
+      <a href="#" class="modal-trigger circle-btn" data-target="modal-settings">Settings</a>
     </li>
     <li>
       <a href="join.html">Join Room</a>
@@ -22,13 +22,42 @@
     <li>
       <a href="#" id="logout">Logout</a>
     </li>
-  </ul>
+  </ul> -->
 
-  <!-- EMAIL VERIFICATION BANNER -->
-  <div class="verify-email-banner" style="display: none;">
+   <!-- EMAIL VERIFICATION BANNER -->
+   <div class="verify-email-banner" style="display: none;">
     <img src="images/grey_x.png" href="#" id="close-x">
     <p style="display: inline;">Please verify your email. Click <a href="#" id="resend-email-verification">here</a> to resend your verification email.</p>
   </div>
+
+  <!--buttons-->
+  <div>
+    <script>
+      const circleBtns = [
+      '<button href="#" class="modal-trigger circle-btn" data-target="modal-settings">Settings</button>', 
+      '<button href="join.html"class="circle-btn">Join Room</button>',
+      '<button href="#" class="modal-trigger circle-btn" data-target="modal-account">Profile</button>',
+      '<button href="#" class ="circle-btn" id="logout">Logout</button>']
+      var startAngle = Math.PI / circleBtns.length,
+        angle = startAngle / 2,
+        radius = 450,
+        offset = window.innerWidth / 2;
+  
+      for ( var i = 0; i < circleBtns.length; i++ ) {
+        var span = document.createElement( "span" );
+        span.className = "semicircle";
+        span.innerHTML = circleBtns[i];
+        span.style.right = radius * Math.cos( angle ) + offset + "px";
+        span.style.bottom = radius * Math.sin( angle ) + "px";
+        document.body.appendChild( span );
+        angle += startAngle;
+    }
+    </script>
+    </div>
+
+    <div>
+      <img class="centre-image" src="images/final_wave.gif">
+    </div>
 
   <!-- ACCOUNT MODAL -->
   <div id="modal-account" class="modal">
