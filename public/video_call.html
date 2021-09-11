@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="video_call.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <title>Study Room</title>
+</head>
+<body>
+    <a class="btn-cta-mic" href="#"><i class="fas fa-microphone"></i></a>
+    <a class="btn-cta-video" href="#"><i class="fas fa-video"></i></a>
+    <button id="btn">Find friends</button>
+    
+    <img id="dogImg" src="#" alt="">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        $("#btn").click(function () {
+            $.getJSON("https://dog.ceo/api/breeds/image/random")
+                .done(addDog)
+                .fail(function () {
+                console.log("Dog fetch failed!");
+            });
+        });
+        function addDog(data) {
+            $("#dogImg").attr("src", data.message);
+        }
+    </script>
+
+    <div class="background"></div>
+
+</body>
+</html>

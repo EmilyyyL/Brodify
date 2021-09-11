@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=DM+Sans:300,400,500,600,700,800,900&display=swap');
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+}
+
+body
+{
+  min-height: 100vh;
+  background: #25242d;
+}
+
+div.background {
+    position: fixed;
+    background-image: url('images/single_vid_background.jpg');
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    z-index: -1 !important;
+}
+
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  max-width: 70%;
+  max-height: 90%;
+  width: auto;
+  height: auto;
+  right: 20%;
+  top: 25%;
+  border-radius: 10px;
+}
