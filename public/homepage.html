@@ -35,6 +35,7 @@
     <script>
       const circleBtns = [
       '<button href="#" class="modal-trigger circle-btn" data-target="modal-settings">Settings</button>', 
+      '<button onclick=openWin() class="modal-trigger circle-btn">To-Do List</button>',
       '<button href="join.html"class="circle-btn">Join Room</button>',
       '<button href="#" class="modal-trigger circle-btn" data-target="modal-account">Profile</button>',
       '<button href="#" class ="circle-btn" id="logout">Logout</button>']
@@ -51,6 +52,10 @@
         span.style.bottom = radius * Math.sin( angle ) + "px";
         document.body.appendChild( span );
         angle += startAngle;
+
+      function openWin() {
+        window.open("todolist_final.html","_blank","width=450, height=400");
+      }
     }
     </script>
     </div>
