@@ -42,7 +42,7 @@
       var startAngle = Math.PI / circleBtns.length,
         angle = startAngle / 2,
         radius = 450,
-        offset = window.innerWidth / 2;
+        offset = (window.innerWidth - 0.25 *  radius) / 2;
   
       for ( var i = 0; i < circleBtns.length; i++ ) {
         var span = document.createElement( "span" );
