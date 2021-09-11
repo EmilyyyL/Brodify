@@ -30,11 +30,27 @@ img{
   margin-left: auto;
   margin-right: auto;
   position: absolute;
-  max-width: 70%;
+  max-width: 40%;
   max-height: 90%;
   width: auto;
   height: auto;
   right: 20%;
   top: 25%;
   border-radius: 10px;
+}
+
+#mic{
+  position: fixed;
+  font-size: 40px;
+  right: 4%;
+  top: 30%;
+  color: white;
+}
+
+#vid{
+  position: fixed;
+  font-size: 38px;
+  right: 3.5%;
+  top: 50%;
+  color: white;
 }
