@@ -1,258 +1,261 @@
-<!DOCTYPE html>
-<html>
+<html lang ="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" /> -->
-<style>
-body {
-  margin: 0;
-  min-width: 250px;
-  background-color: #353247;
-}
-
-/* Include the padding and border in an element's total width and height */
-* {
-  box-sizing: border-box;
-}
-
-@import url('https://fonts.googleapis.com/css?family=DM+Sans:300,400,500,600,700,800,900&display=swap');
-*
-{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'DM Sans', sans-serif;
-}
-/* Remove margins and padding from the list */
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-/* Style the list items */
-ul li {
-  cursor: pointer;
-  position: relative;
-  padding: 12px 8px 12px 40px;
-  list-style-type: none;
-  background: #838392e8;
-  font-size: 18px;
-  transition: 0.2s;
-  
-  /* make the list items unselectable */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Set all odd list items to a different color (zebra-stripes) */
-ul li:nth-child(odd) {
-  background: #9191a0e8;
-}
-
-/* Darker background-color on hover */
-ul li:hover {
-  background: #63636ee8;
-}
-
-/* When clicked on, add a background color and strike out text */
-ul li.checked {
-  background: #888;
-  color: rgb(225, 196, 252);
-  text-decoration: line-through;
-}
-
-/* Add a "checked" mark when clicked on */
-ul li.checked::before {
-  content: '';
-  position: absolute;
-  border-color: rgb(225, 196, 252);
-  border-style: solid;
-  border-width: 0 2px 2px 0;
-  top: 10px;
-  left: 16px;
-  transform: rotate(45deg);
-  height: 15px;
-  width: 7px;
-}
-
-/* Style the close button */
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 12px 16px 12px 16px;
-}
-
-.close:hover {
-  background-color: #f44336;
-  color: rgb(225, 196, 252);
-}
-
-/* Style the header */
-.header {
-  background-color: #353247;
-  padding: 30px 40px;
-  color: #d2b3ff;
-  text-align: center;
-}
-
-
-/* Style the footer */
-.footer {
-  position:static;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #353247;
-  padding: 30px 40px;
-  color: #9071ba;
-  text-align: center;
-}
-
-/* Clear floats after the header */
-.header:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.input-text {
-  padding:10px;
-  border:0;
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-  border-radius:10px;
-}
-
-/* Style the input */
-input {
-  margin: 0;
-  border: none;
-  border-radius: 0;
-  width: 75%;
-  padding: 10px;
-  float: left;
-  font-size: 16px;
-}
-
-/* Style the "Add" button */
-.addBtn {
-  padding: 10px;
-  width: 25%;
-  background: rgb(77, 76, 85);
-  color: rgb(225, 196, 252);
-  float: left;
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-  border-radius:10px;
-}
-
-.addBtn:hover {
-  background-color: #9071ba;
-  color: white;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="materialize.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+  <title>Brodify</title>
 </head>
-<body>
+<body id="logged-in-homepage">
+  
+  <!--LOGIN FAILED-->
+  <div class="login-fail">
+    <p>We've failed to log you in successfully. Click <a href="index.html">here</a> to try to log in again.</p>
+  </div> 
 
-<!-- <div style = "width: 300px; height: 500px; line-height: 1em; overflow:scroll; padding: 1px;"> -->
+   <!-- EMAIL VERIFICATION BANNER -->
+   <div class="verify-email-banner" style="display: none;">
+    <img src="images/grey_x.png" href="#" id="close-x">
+    <p style="display: inline;">Please verify your email. Click <a href="#" id="resend-email-verification">here</a> to resend your verification email.</p>
+  </div>
 
-<div id="myDIV" class="header">
-  <p>Points:</p> 
-  <p id="points" class="points"></p>
-  <h2 style="margin:5px">to-do list</h2>
-  <input type="text" id="myInput" class="input-text" placeholder="to-do item...">
-  <span onclick="newElement()" class="addBtn">Add</span>
-</div>
+  <!--buttons-->
+  <div>
+    <script>
+      const circleBtns = [
+      '<button href="#" class="modal-trigger circle-btn" data-target="modal-settings" title="Settings"><i class="fas fa-cog"></i></button>',
+      '<button onclick=openWin() class="modal-trigger circle-btn" title="To-do-list"><i class="fas fa-tasks"></i></button>',
+      '<a href="join.html" id="join_room" title="Join room"><i class="fas fa-users"></i></a>',
+      '<button href="#" class="modal-trigger circle-btn" data-target="modal-account" title="Profile"><i class="fas fa-user-circle"></button>',
+      '<button href="#" class ="circle-btn" id="logout" title="Log out"><i class="fas fa-sign-out-alt"></i></button>']
 
 
-<ul class ="todolist" id="myUL">
-  <!-- <li>Hit the gym</li> -->
-</ul>
+      var startAngle = Math.PI / circleBtns.length,
+        angle = startAngle / 2,
+        radius = 450,
+        offset = (window.innerWidth - 0.25 *  radius) / 2;
+  
+      for ( var i = 0; i < circleBtns.length; i++ ) {
+        var span = document.createElement( "span" );
+        span.className = "semicircle";
+        span.innerHTML = circleBtns[i];
+        span.style.right = radius * Math.cos( angle ) + offset + "px";
+        span.style.bottom = radius * Math.sin( angle ) + "px";
+        document.body.appendChild( span );
+        angle += startAngle;
 
-
-<div id="footerDIV" class="footer">
-</div>
-
-<script>
-  // Add a "checked" symbol when clicking on a list item
-  var list = document.querySelector('ul');
-  var points = 0;
-  list.addEventListener('click', function(ev) { 
-    if (ev.target.tagName === 'LI') {
-      ev.target.classList.toggle('checked');
-      points++;
-      document.getElementById("points").innerHTML = points;
-      ev.target.style.display = "none";
-    }
-  }, false);
-
-  // Create a new list item when clicking on the "Add" button
-  function newElement() {
-    var li = document.createElement("li");
-    var inputValue = document.getElementById("myInput").value;
-    var t = document.createTextNode(inputValue);
-    li.appendChild(t);
-    if (inputValue === '') {
-      alert("You must write something!");
-    } else {
-      db.collection('users').doc(firebase.auth().currentUser.uid).collection('tasks').add({
-        task: inputValue,
-        completed: false
-      });
-      document.getElementById("myUL").appendChild(li);
-    }
-    document.getElementById("myInput").value = "";
-
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    li.appendChild(span);
-
-    for (i = 0; i < close.length; i++) {
-      close[i].onclick = function() {
-        var div = this.parentElement;
-        div.style.display = "none";
+      function openWin() {
+        window.open("todolist_final.html","_blank","width=450, height=400");
       }
     }
-  }
-</script>
-<!-- </div> -->
-<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+    </script>
+  </div>
 
-<script>
-  // Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDrzd3WxCZoNGRb7raEkzEeYHXv8oh1doQ",
-    authDomain: "personal-project-2021.firebaseapp.com",
-    projectId: "personal-project-2021",
-    storageBucket: "personal-project-2021.appspot.com",
-    messagingSenderId: "836140640649",
-    appId: "1:836140640649:web:fa8a605344d8c461589958",
-    measurementId: "G-BPSV43KV2G"
-  };
-  // Initialize Firebase
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  }
-    
-  // make auth and firestore references
-    const auth = firebase.auth();
-    const db = firebase.firestore();
+  <!-- Landscape -->
+  <div>
+    <img class="centre-image" src="images/final brody landscape.gif">
+  </div>
 
-</script>
+  <!-- ACCOUNT MODAL -->
+  <div id="modal-account" class="modal">
+    <div class="modal-content">
+      <div><img class="profile-brody" src="images/profbrody.gif"></div>
+      <h4>Profile</h4><br />
+      <div class="account-details"></div><br>
+      <button class="auth-btn z-depth-0" id="close-settings">Close profile</button>
+    </div>
+  </div>
 
-<!-- JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="scripts/auth.js"></script>
-<script src="scripts/index.js"></script>
+  <!-- SETTINGS MODAL -->
+  <div id="modal-settings" class="modal">
+    <div class="modal-content">
+      <h4>Settings</h4></br>
+      <div class="account-settings"></div>
+      <br>
+      <a href="#" id="change-password-btn" class="modal-trigger" data-target="modal-change-password">Change password</a>
+      <a href="#" id="delete-account-btn" class="modal-trigger" data-target="modal-delete-account">Delete account</a><br><br><br>
+      <button class="auth-btn z-depth-0" id="close-settings">Close settings</button>
+    </div>
+  </div>
 
+  <!-- CHANGE USERNAME MODAL -->
+  <div id="modal-change-username" class="modal">
+    <div class="modal-content">
+      <h4>Change your username</h4>
+      <p>Enter your new username.</p>
+      <form id="change-username-form">
+        <div class="input-field">
+          <input type="text" id="new-username" required />
+          <label for="new-username">New username</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="username-password-verify">
+          <label for="username-password-verify">Password</label>
+        </div>
+        <button class="auth-btn z-depth-0">Change username</button>
+      </form>
+    </div>
+  </div>
+
+   <!-- CHANGE EMAIL MODAL -->
+   <div id="modal-change-email" class="modal">
+    <div class="modal-content">
+      <h4>Change your email</h4>
+      <p>Enter your new email.</p>
+      <form id="change-email-form">
+        <div class="input-field">
+          <input type="email" id="new-email" required />
+          <label for="new-email">New email</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="email-password-verify">
+          <label for="email-password-verify">Password</label>
+        </div>
+        <button class="auth-btn z-depth-0">Change email</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CHANGE PRONOUNS MODAL -->
+  <div id="modal-change-pronouns" class="modal">
+    <div class="modal-content">
+      <h4>Change your pronouns</h4>
+      <p>Enter your pronouns.</p>
+      <form id="change-pronouns-form">
+        <div class="input-field">
+          <label for="new-pronouns">Pronouns</label>
+            <input type="text" list="pronouns" id="new-pronouns" required />
+            <datalist id="pronouns">
+              <option value="He/him">
+              <option value="She/her">
+              <option value="They/them">
+              <option value="">
+            </datalist>
+        </div>
+        <button class="auth-btn z-depth-0">Change pronouns</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CHANGE YEAR MODAL -->
+  <div id="modal-change-year" class="modal">
+    <div class="modal-content">
+      <h4>Change your year</h4>
+      <p>Choose your year.</p>
+      <form id="change-year-form">
+        <div>
+          <label for="new-year">Year:</label>
+          <select id="new-year" required>
+            <option value="">Select your year</option>
+            <option value="1st year">1st year</option>
+            <option value="2nd year">2nd year</option>
+            <option value="3rd year">3rd year</option>
+            <option value="4th year">4th year</option>
+            <option value="5th year or higher">5th year or higher</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <button class="auth-btn z-depth-0">Change year</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CHANGE COURSES MODAL -->
+  <div id="modal-change-courses" class="modal">
+    <div class="modal-content">
+      <h4>Edit your courses</h4>
+      <p>Enter your courses.</p>
+      <form id="change-courses-form">
+        <div class="input-field">
+          <input type="text" id="new-courses" required />
+          <label for="new-courses">Courses</label>
+        </div>
+        <button class="auth-btn z-depth-0">Change courses</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CHANGE BIO MODAL -->
+  <div id="modal-change-bio" class="modal">
+    <div class="modal-content">
+      <h4>Edit your bio</h4>
+      <p>Bio</p>
+      <form id="change-bio-form">
+        <div class="input-field">
+          <input type="text" id="new-bio" required />
+          <label for="new-bio">Bio</label>
+        </div>
+        <button class="auth-btn z-depth-0">Change bio</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CHANGE PASSWORD MODAL -->
+  <div id="modal-change-password" class="modal">
+    <div class="modal-content">
+      <h4>Change your password</h4>
+      <p>Enter your current password and then your new password.</p>
+      <form id="change-password-form">
+        <div class="input-field">
+          <input type="password" id="current-password-verify">
+          <label for="current-password-verify">Current password</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="new-password" required />
+          <label for="new-password">New password</label>
+        </div>
+        <button class="auth-btn z-depth-0">Change password</button>
+      </form>
+    </div>
+  </div>
+
+    <!-- DELETE ACCOUNT MODAL -->
+    <div id="modal-delete-account" class="modal">
+      <div class="modal-content">
+        <h4>Delete your account</h4>
+        <p>Are you sure you want to delete this account? This action cannot be undone. You will be logged out immediately and never be able to access this account again.</p>
+        <form id="delete-account-form">
+          <div class="input-field">
+            <input type="password" id="delete-password-verify">
+            <label for="delete-password-verify">Password</label>
+          </div>
+          <button class="auth-btn z-depth-0">Delete account</button>
+        </form>
+      </div>
+    </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+
+  <script>
+    // Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDrzd3WxCZoNGRb7raEkzEeYHXv8oh1doQ",
+      authDomain: "personal-project-2021.firebaseapp.com",
+      projectId: "personal-project-2021",
+      storageBucket: "personal-project-2021.appspot.com",
+      messagingSenderId: "836140640649",
+      appId: "1:836140640649:web:fa8a605344d8c461589958",
+      measurementId: "G-BPSV43KV2G"
+    };
+    // Initialize Firebase
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+      
+    // make auth and firestore references
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+  </script>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/index.js"></script>
 </body>
 </html>
