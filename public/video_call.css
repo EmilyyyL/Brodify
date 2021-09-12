@@ -79,6 +79,7 @@ img{
   position: relative;
   left: 20px;
   top: 33px;
+  text-decoration: none;
 }
 
 #leave:hover
