@@ -73,14 +73,6 @@ const setupUI = (user) => {
         const modal = document.querySelector('#modal-settings');
         M.Modal.getInstance(modal).close();
       });
-      
-      // close profile
-      const closeProfile = document.querySelector('#close-profile');
-      closeProfile.addEventListener('click', (e) => {
-        e.preventDefault();
-        const modal = document.querySelector('#modal-account');
-        M.Modal.getInstance(modal).close();
-      });
 
       // change username
       const changeusernameForm = document.querySelector('#change-username-form');
@@ -228,6 +220,30 @@ const setupUI = (user) => {
       }); 
 
       // Delete account
+      const deleteaccountForm = document.querySelector('#delete-account-form');
+      deleteaccountForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        var user = firebase.auth().currentUser;
+        var credential = firebase.auth.EmailAuthProvider.credential(
+          firebase.auth().currentUser.email,
+          deleteaccountForm['delete-password-verify'].value
+        );
+        user.reauthenticateWithCredential(credential).then(function(credential) {
+          db.collection("users").doc(credential.user.uid).delete();
+          user.delete().then(function() {
+            const modal = document.querySelector('#modal-delete-account');
+            M.Modal.getInstance(modal).close();
+            deleteaccountForm.reset();
+            window.location = 'index.html'
+          }).catch(function(error) {
+              console.log('delete user FAILED');
+          });
+        })
+        .catch(function(error) {
+          // An error happened with reauthenication.
+            console.log('reauthenication FAILED');
+        });
+      });
     }
   }
 };
@@ -245,39 +261,32 @@ const setupTodolist = (data) => {
       html += li;
     });
     todoList.innerHTML = html
+    // Create a "close" button and append it to each list item
+    var myNodelist = document.getElementsByTagName("LI");
+    var i;
+    
+    for (i = 0; i < myNodelist.length; i++) {
+      var span = document.createElement("SPAN");
+      var txt = document.createTextNode("\u00D7");
+      span.className = "close";
+      span.appendChild(txt);
+      myNodelist[i].appendChild(span);
+    }
+    
+    // Click on a close button to hide the current list item
+    var close = document.getElementsByClassName("close");
+    var i;
+    for (i = 0; i < close.length; i++) {
+      close[i].onclick = function() {
+        var div = this.parentElement;
+        div.style.display = "none";
+      }
+    }
+
   } else {
     todoList.innerHTML = '<h5 class="center-align">You should not be here</h5>';
   }
 };
-
-  
-
-      // delete account
-    // const deleteaccountForm = document.querySelector('#delete-account-form');
-    // deleteaccountForm.addEventListener('submit', (e) => {
-    //   e.preventDefault();
-    //   var user = firebase.auth().currentUser;
-    //   var credential = firebase.auth.EmailAuthProvider.credential(
-    //     firebase.auth().currentUser.email,
-    //     deleteaccountForm['delete-password-verify'].value
-    //   );
-    //   user.reauthenticateWithCredential(credential).then(function(credential) {
-    //     db.collection("users").doc(credential.user.uid).delete() // THIS LINE DOES NOT WORK
-    //     // Remember to delete all subcollections
-    //     user.delete().then(function() {
-    //       const modal = document.querySelector('#modal-delete-account');
-    //       M.Modal.getInstance(modal).close();
-    //       deleteaccountForm.reset();
-    //       window.location = 'index.html'
-    //     }).catch(function(error) {
-    //         console.log('delete user FAILED');
-    //     });
-    //   })
-    //   .catch(function(error) {
-    //     // An error happened with reauthenication.
-    //       console.log('reauthenication FAILED');
-    //   });
-    // });
 
   // setup materialize components
   document.addEventListener('DOMContentLoaded', function() {
