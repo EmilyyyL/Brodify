@@ -94,10 +94,18 @@
       left: 50%;
       margin-right: -50%;
       transform: translate(-50%, 100%);
-      padding-top: 26px;
+      padding-top: 20px;
       font-size: 48px !important;
     }
 
+    #home {
+      position: absolute;
+      color: #9071ba;
+      font-size: 38px;
+      padding-left: 3.5%;
+      padding-top: 2%;
+      z-index: 1000;
+    }
     
   </style>
 
@@ -108,17 +116,16 @@
   <!-- NAV BAR -->
   <div class="topnav">
     <!-- <input type="text" id="search" placeholder="Search.."> -->
-    <input type="text" placeholder="Search..">
+    <input type="text" title="I'm here just for aesthetics xoxo" placeholder="Search..">
 
-    <li><a href="homepage.html">Home</a></li>
-    <li><a href="settings.html">Settings</a></li>
-    <li><a href="profile.html">Profile</a></li>
+    
   </div>
+  <a href="homepage.html" id="home" title="Home"><i class="fas fa-home"></i></a>
   
 
   <div class="container">
     <div class="row">
-      <a id="square" href="" id="new_room">Start a Room</a>
+      <a id="square" href="video_call.html" id="new_room">Start a Room</a>
       <a id="square" href="">Room #2977</a>
       <a id="square" href="">Room #3748</a>
       <a id="square" href="">Room #8538</a>
