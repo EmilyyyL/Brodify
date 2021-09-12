@@ -14,7 +14,7 @@ const setupUI = (user) => {
         <div> <p class = "profile-headings"> Year </p>${doc.data().year}</div> <br>
         <div> <p class = "profile-headings"> Courses </p>${doc.data().courses}</div> <br>
         <div><p class = "profile-headings"> Bio </p>${doc.data().bio}</div>
-        <div><p class = "profile-headings"> Bio </p>${doc.data().points}</div>
+        <div><p class = "profile-headings"> Points </p>${doc.data().points}</div>
       `;
       accountDetails.innerHTML = html;
 
