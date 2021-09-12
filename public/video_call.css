@@ -69,8 +69,9 @@ img{
   font-weight: 500;
   text-align: center;
   position: relative;
-  left: 2.5%;
-  top: 5%;
+  left: 20px;
+  top: 33px;
+  bottom
 }
 
 #leave:hover
