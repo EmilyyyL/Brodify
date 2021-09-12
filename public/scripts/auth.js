@@ -120,6 +120,38 @@ auth.onAuthStateChanged(user => {
       // An error happened.
     });
   });
+    // Close signup modal when user already has an account
+    const closesignupModal = document.querySelector('#already-have-account');
+    closesignupModal.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.querySelector('#modal-signup');
+      M.Modal.getInstance(modal).close();
+    })
+
+    // Close signup modal when user already has an account
+    const closeloginModal = document.querySelector('#need-new-account');
+    closeloginModal.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.querySelector('#modal-login');
+      M.Modal.getInstance(modal).close();
+    })
+    
+   // Close signup modal when user already has an account
+    const closesignupModal = document.querySelector('#already-have-account');
+    closesignupModal.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.querySelector('#modal-signup');
+      M.Modal.getInstance(modal).close();
+    })
+
+    // Close signup modal when user already has an account
+    const closeloginModal = document.querySelector('#need-new-account');
+    closeloginModal.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.querySelector('#modal-login');
+      M.Modal.getInstance(modal).close();
+    })
+    
     setupUI();
     verifyEmailBanner.forEach(item => item.style.display = 'none');
   }
