@@ -42,7 +42,7 @@ img{
 #mic{
   position: fixed;
   font-size: 40px;
-  right: 4%;
+  right: 4.3%;
   top: 30%;
   color: #ccc7f3;
 }
@@ -51,7 +51,15 @@ img{
   position: fixed;
   font-size: 38px;
   right: 3.5%;
-  top: 50%;
+  top: 45%;
+  color: #ccc7f3;
+}
+
+#end-call{
+  position: fixed;
+  font-size: 38px;
+  right: 3.5%;
+  top: 59%;
   color: #ccc7f3;
 }
 
