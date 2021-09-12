@@ -1,6 +1,7 @@
 // DOM elements
 const accountDetails = document.querySelector('.account-details');
 const accountSettings = document.querySelector('.account-settings');
+const todoList = document.querySelector('.todolist');
 
 const setupUI = (user) => {
   if (user) {
@@ -13,6 +14,7 @@ const setupUI = (user) => {
         <div> <p class = "profile-headings"> Year </p>${doc.data().year}</div> <br>
         <div> <p class = "profile-headings"> Courses </p>${doc.data().courses}</div> <br>
         <div><p class = "profile-headings"> Bio </p>${doc.data().bio}</div>
+        <div><p class = "profile-headings"> Bio </p>${doc.data().points}</div>
       `;
       accountDetails.innerHTML = html;
 
@@ -63,26 +65,74 @@ const setupUI = (user) => {
       accountSettings.innerHTML = settingsHTML;
     });
 
-    // close settings
-    const closeSettings = document.querySelector('#close-settings');
-    closeSettings.addEventListener('click', (e) => {
-      e.preventDefault();
-      const modal = document.querySelector('#modal-settings');
-      M.Modal.getInstance(modal).close();
-    });
+    if (window.location.pathname == '/homepage.html') {
+      // close settings
+      const closeSettings = document.querySelector('#close-settings');
+      closeSettings.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modal = document.querySelector('#modal-settings');
+        M.Modal.getInstance(modal).close();
+      });
 
-    // change username
-    const changeusernameForm = document.querySelector('#change-username-form');
-    changeusernameForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      var user = firebase.auth().currentUser;
-      var credential = firebase.auth.EmailAuthProvider.credential(
-        firebase.auth().currentUser.email,
-        changeusernameForm['username-password-verify'].value
-      );
-      user.reauthenticateWithCredential(credential).then(function(cred) {
-        db.collection('users').doc(cred.user.uid).update({
-          username: changeusernameForm['new-username'].value
+      // change username
+      const changeusernameForm = document.querySelector('#change-username-form');
+      changeusernameForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        var user = firebase.auth().currentUser;
+        var credential = firebase.auth.EmailAuthProvider.credential(
+          firebase.auth().currentUser.email,
+          changeusernameForm['username-password-verify'].value
+        );
+        user.reauthenticateWithCredential(credential).then(function(cred) {
+          db.collection('users').doc(cred.user.uid).update({
+            username: changeusernameForm['new-username'].value
+          })
+          .then(function() {
+            // Update successful.
+            location.reload();
+          }).catch(function(error) {
+            // An error happened.
+            console.log('username update FAILED');
+          });
+        })
+        .catch(function(error) {
+          // An error happened with reauthenication.
+            console.log('reauthenication FAILED');
+        });
+      });
+
+      // change email
+      const changeemailForm = document.querySelector('#change-email-form');
+      changeemailForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        var user = firebase.auth().currentUser;
+        var credential = firebase.auth.EmailAuthProvider.credential(
+          firebase.auth().currentUser.email,
+          changeemailForm['email-password-verify'].value
+        );
+        user.reauthenticateWithCredential(credential).then(function(userCredential) {
+            user.updateEmail(changeemailForm['new-email'].value).then(function() {
+            // Update successful.
+            console.log('email update successful');
+            location.reload();
+            }).catch(function(error) {
+              // An error happened.
+              console.log('email update FAILED');
+            });
+        })
+        .catch(function(error) {
+          // An error happened with reauthenication.
+            console.log('reauthenication FAILED');
+        });
+      });
+
+      // change pronouns
+      const changepronounsForm = document.querySelector('#change-pronouns-form');
+      changepronounsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        var user = firebase.auth().currentUser;
+        db.collection('users').doc(user.uid).update({
+          pronouns: changepronounsForm['new-pronouns'].value
         })
         .then(function() {
           // Update successful.
@@ -92,135 +142,105 @@ const setupUI = (user) => {
           console.log('username update FAILED');
         });
       })
-      .catch(function(error) {
-        // An error happened with reauthenication.
-          console.log('reauthenication FAILED');
-      });
-    });
 
-    // change email
-    const changeemailForm = document.querySelector('#change-email-form');
-    changeemailForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      var user = firebase.auth().currentUser;
-      var credential = firebase.auth.EmailAuthProvider.credential(
-        firebase.auth().currentUser.email,
-        changeemailForm['email-password-verify'].value
-      );
-      user.reauthenticateWithCredential(credential).then(function(userCredential) {
-          user.updateEmail(changeemailForm['new-email'].value).then(function() {
+      // change year
+      const changeyearForm = document.querySelector('#change-year-form');
+      changeyearForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        var user = firebase.auth().currentUser;
+        db.collection('users').doc(user.uid).update({
+          year: changeyearForm['new-year'].value
+        })
+        .then(function() {
           // Update successful.
-          console.log('email update successful');
           location.reload();
-          }).catch(function(error) {
-            // An error happened.
-            console.log('email update FAILED');
-          });
+        }).catch(function(error) {
+          // An error happened.
+          console.log('year update FAILED');
+        });
       })
-      .catch(function(error) {
-        // An error happened with reauthenication.
-          console.log('reauthenication FAILED');
-      });
-    });
 
-    // change pronouns
-    const changepronounsForm = document.querySelector('#change-pronouns-form');
-    changepronounsForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      var user = firebase.auth().currentUser;
-      db.collection('users').doc(user.uid).update({
-        pronouns: changepronounsForm['new-pronouns'].value
-      })
-      .then(function() {
-        // Update successful.
-        location.reload();
-      }).catch(function(error) {
-        // An error happened.
-        console.log('username update FAILED');
-      });
-    })
-
-    // change year
-    const changeyearForm = document.querySelector('#change-year-form');
-    changeyearForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      var user = firebase.auth().currentUser;
-      db.collection('users').doc(user.uid).update({
-        year: changeyearForm['new-year'].value
-      })
-      .then(function() {
-        // Update successful.
-        location.reload();
-      }).catch(function(error) {
-        // An error happened.
-        console.log('year update FAILED');
-      });
-    })
-
-    // edit courses
-    const changecoursesForm = document.querySelector('#change-courses-form');
-    changecoursesForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      var user = firebase.auth().currentUser;
-      db.collection('users').doc(user.uid).update({
-        courses: changecoursesForm['new-courses'].value
-      })
-      .then(function() {
-        // Update successful.
-        location.reload();
-      }).catch(function(error) {
-        // An error happened.
-        console.log('courses update FAILED');
-      });
-    })
-
-    // edit bio
-    const changebioForm = document.querySelector('#change-bio-form');
-    changebioForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      var user = firebase.auth().currentUser;
-      db.collection('users').doc(user.uid).update({
-        bio: changebioForm['new-bio'].value
-      })
-      .then(function() {
-        // Update successful.
-        location.reload();
-      }).catch(function(error) {
-        // An error happened.
-        console.log('bio update FAILED');
-      });
-    })
-
-    // change password
-    const changepasswordForm = document.querySelector('#change-password-form');
-    changepasswordForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      var user = firebase.auth().currentUser;
-      var credential = firebase.auth.EmailAuthProvider.credential(
-        firebase.auth().currentUser.email,
-        changepasswordForm['current-password-verify'].value
-      );
-      user.reauthenticateWithCredential(credential).then(function(userCredential) {
-          user.updatePassword(changepasswordForm['new-password'].value).then(function() {
+      // edit courses
+      const changecoursesForm = document.querySelector('#change-courses-form');
+      changecoursesForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        var user = firebase.auth().currentUser;
+        db.collection('users').doc(user.uid).update({
+          courses: changecoursesForm['new-courses'].value
+        })
+        .then(function() {
           // Update successful.
-          console.log('password update successful');
           location.reload();
-          }).catch(function(error) {
-            // An error happened.
-            console.log('password update FAILED');
-          });
+        }).catch(function(error) {
+          // An error happened.
+          console.log('courses update FAILED');
+        });
       })
-      .catch(function(error) {
-        // An error happened with reauthenication.
-          console.log('reauthenication FAILED');
-      });
-    }); 
-    
-    // Delete account
+
+      // edit bio
+      const changebioForm = document.querySelector('#change-bio-form');
+      changebioForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        var user = firebase.auth().currentUser;
+        db.collection('users').doc(user.uid).update({
+          bio: changebioForm['new-bio'].value
+        })
+        .then(function() {
+          // Update successful.
+          location.reload();
+        }).catch(function(error) {
+          // An error happened.
+          console.log('bio update FAILED');
+        });
+      })
+
+      // change password
+      const changepasswordForm = document.querySelector('#change-password-form');
+      changepasswordForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        var user = firebase.auth().currentUser;
+        var credential = firebase.auth.EmailAuthProvider.credential(
+          firebase.auth().currentUser.email,
+          changepasswordForm['current-password-verify'].value
+        );
+        user.reauthenticateWithCredential(credential).then(function(userCredential) {
+            user.updatePassword(changepasswordForm['new-password'].value).then(function() {
+            // Update successful.
+            console.log('password update successful');
+            location.reload();
+            }).catch(function(error) {
+              // An error happened.
+              console.log('password update FAILED');
+            });
+        })
+        .catch(function(error) {
+          // An error happened with reauthenication.
+            console.log('reauthenication FAILED');
+        });
+      }); 
+
+      // Delete account
+    }
   }
 };
 
-
+const setupTodolist = (data) => {
+  if (data.length) {
+    let html = '';
+    data.forEach(doc => {
+      const tasks = doc.data();
+      const li = `
+        <li>
+          <div class=""> ${tasks.task} </div>
+        </li>
+      `;
+      html += li;
+    });
+    todoList.innerHTML = html
+  } else {
+    todoList.innerHTML = '<h5 class="center-align">You should not be here</h5>';
+  }
+};
 
   
 
@@ -261,4 +281,3 @@ const setupUI = (user) => {
     M.Collapsible.init(items);
 
   });
-  
