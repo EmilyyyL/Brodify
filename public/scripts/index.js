@@ -7,12 +7,12 @@ const setupUI = (user) => {
     // account info
     db.collection('users').doc(user.uid).get().then(doc => {
       const html = `
-        <div>Logged in as ${user.email}</div>
-        <div>${doc.data().username}</div>
-        <div>${doc.data().pronouns}</div>
-        <div>${doc.data().year}</div>
-        <div>${doc.data().courses}</div>
-        <div>${doc.data().bio}</div>
+        <div> Logged in as ${user.email}</div> <br>
+        <div> <p class = "profile-headings"> Username </p> ${doc.data().username}</div> <br>
+        <div> <p class = "profile-headings"> Pronouns </p>${doc.data().pronouns}</div> <br>
+        <div> <p class = "profile-headings"> Year </p>${doc.data().year}</div> <br>
+        <div> <p class = "profile-headings"> Courses </p>${doc.data().courses}</div> <br>
+        <div><p class = "profile-headings"> Bio </p>${doc.data().bio}</div>
       `;
       accountDetails.innerHTML = html;
 
