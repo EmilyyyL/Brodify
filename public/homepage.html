@@ -6,6 +6,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="materialize.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
   <title>Brodify</title>
 </head>
 <body id="logged-in-homepage">
@@ -34,11 +35,13 @@
   <div>
     <script>
       const circleBtns = [
-      '<button href="#" class="modal-trigger circle-btn" data-target="modal-settings">Settings</button>', 
-      '<button onclick=openWin() class="modal-trigger circle-btn">To-Do List</button>',
-      '<button href="join.html"class="circle-btn">Join Room</button>',
-      '<button href="#" class="modal-trigger circle-btn" data-target="modal-account">Profile</button>',
-      '<button href="#" class ="circle-btn" id="logout">Logout</button>']
+      '<button href="#" class="modal-trigger circle-btn" data-target="modal-settings" title="Settings"><i class="fas fa-cog"></i></button>',
+      '<button onclick=openWin() class="modal-trigger circle-btn" title="To-do-list"><i class="fas fa-tasks"></i></button>',
+      '<button href="join.html"class="circle-btn" title="Join room"><i class="fas fa-users"></i></button>',
+      '<button href="#" class="modal-trigger circle-btn" data-target="modal-account" title="Profile"><i class="fas fa-user-circle"></button>',
+      '<button href="#" class ="circle-btn" id="logout" title="Log out"><i class="fas fa-sign-out-alt"></i></button>']
+
+
       var startAngle = Math.PI / circleBtns.length,
         angle = startAngle / 2,
         radius = 450,
