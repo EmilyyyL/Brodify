@@ -15,7 +15,7 @@ body
 
 div.background {
     position: fixed;
-    background-image: url('images/single_vid_background.jpg');
+    background-image: url('images/sad_single_vid_background.jpg');
     background-position: right center;
     background-repeat: no-repeat;
     background-size: contain;
