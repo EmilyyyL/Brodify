@@ -249,3 +249,15 @@ p1 {
   border-color: #9071ba;
   color: #e6e5e0;
 }
+
+.profile-headings
+{
+  color: #3E1076;
+}
+
+.profile-brody
+{
+  position: absolute;
+  right: 50;
+  width: 400px;
+}
