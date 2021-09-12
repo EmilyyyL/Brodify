@@ -1,6 +1,136 @@
- <div class="topnav">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+  <title>Join Room</title>
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css?family=DM+Sans:300,400,500,600,700,800,900&display=swap');
+    *
+    {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    body {
+      background-color: #25242d;
+    }
+
+
+    .topnav input[type=text] {
+      position: absolute;
+      top: 120px;
+      background-color: #434151;
+      color: white;
+      right: 3%;
+      float: right;
+      border: none;
+      padding: 6px;
+      margin-top: 4px;
+      margin-right: 16px;
+      border-radius: 10px;
+      font-size: 15px;
+      z-index: 999;
+    }
+
+
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #aaa4cc;
+      opacity: 1; /* Firefox */
+    }
+
+    .container {
+      position: relative;
+      padding-top: 120px;
+      display: grid;
+      padding-left: 50px;
+      padding-right: 50px
+    }
+
+    .row {
+      display: grid;
+      grid: repeat(1, 18vw) / auto-flow;
+    }
+
+    .row > #square {
+      margin: 10px;
+      background: #353247;
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+      padding-top: 20px;
+
+    }
+
+    .row > .square > #new_room{
+      position: fixed;
+      font-size: 40px;
+      right: 4%;
+      top: 30%;
+      color: #ccc7f3;
+    }
+
+    @media (orientation: portrait) {
+      
+      .container {
+        transform: rotate(90deg) translate(35%);
+      }
+      
+      .row > .square {
+        transform: rotate(-90deg);
+      }
+    }
+
+    h1 {
+      position: absolute;
+      color: #a495ff;
+      z-index: 998;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, 100%);
+      padding-top: 26px;
+      font-size: 48px !important;
+    }
+
+    
+  </style>
+
+</head>
+<body>
+
+  <h1>join room</h1>
+  <!-- NAV BAR -->
+  <div class="topnav">
+    <!-- <input type="text" id="search" placeholder="Search.."> -->
     <input type="text" placeholder="Search..">
+
     <li><a href="homepage.html">Home</a></li>
     <li><a href="settings.html">Settings</a></li>
     <li><a href="profile.html">Profile</a></li>
   </div>
+  
+
+  <div class="container">
+    <div class="row">
+      <a id="square" href="" id="new_room">Start a Room</a>
+      <a id="square" href="">Room #2977</a>
+      <a id="square" href="">Room #3748</a>
+      <a id="square" href="">Room #8538</a>
+    </div>
+    <div class="row">
+      <a id="square" href="">Room #4658</a>
+      <a id="square" href="">Room #1138</a>
+      <a id="square" href="">Room #3273</a>
+      <a id="square" href="">Room #7723</a>
+    </div>
+  
+
+</body>
+</html>
+
