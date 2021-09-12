@@ -73,6 +73,14 @@ const setupUI = (user) => {
         const modal = document.querySelector('#modal-settings');
         M.Modal.getInstance(modal).close();
       });
+      
+      // close profile
+      const closeProfile = document.querySelector('#close-profile');
+      closeProfile.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modal = document.querySelector('#modal-account');
+        M.Modal.getInstance(modal).close();
+      });
 
       // change username
       const changeusernameForm = document.querySelector('#change-username-form');
