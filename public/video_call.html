@@ -14,8 +14,11 @@
     <!-- <a class="btn-cta-freequote" id="home" href="#"><i class="fas fa-home"></i></a>
     <a class="btn-cta-freequote" id="back" href="#"><i class="fas fa-chevron-circle-left"></i></a> -->
     <button class="leave" id="leave">leave</button>
+    <button class="leave" id="leave" onclick=openWin()>to-do list</button>
     <img id="dogImg" src="#" alt="">
     
+    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
@@ -28,6 +31,10 @@
         });
         function addDog(data) {
             $("#dogImg").attr("src", data.message);
+        }
+
+        function openWin() {
+            window.open("todolist_final.html","_blank","width=450, height=400");
         }
     </script>
 
