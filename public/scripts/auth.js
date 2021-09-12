@@ -73,7 +73,7 @@ auth.onAuthStateChanged(user => {
           year: signupForm['signup-year'].value,
           courses: signupForm['signup-courses'].value,
           bio:signupForm['signup-bio'].value,
-          level: 0
+          points: 0
         });
       }).then(() => {
         // send email verification
