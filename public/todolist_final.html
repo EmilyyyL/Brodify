@@ -236,10 +236,10 @@ input {
       // Add a "checked" symbol when clicking on a list item
       var list = document.querySelector('ul');
       var points = 0;
-      document.getElementById("points").innerHTML = points;
       list.addEventListener('click', function(ev) { 
         if (ev.target.tagName === 'LI') {
           ev.target.classList.toggle('checked');
+          document.getElementById("points").innerHTML = points;
           points++;
           ev.target.style.display = "none";
         }
