@@ -211,8 +211,7 @@ input {
 <script src="scripts/index.js"></script>
 
 <script>
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user){
+
       // Create a "close" button and append it to each list item
       var myNodelist = document.getElementsByTagName("LI");
       var i;
@@ -276,9 +275,6 @@ input {
           }
         }
       }
-    }
-
-  });
 
 
 </script>
