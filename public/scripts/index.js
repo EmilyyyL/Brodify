@@ -14,7 +14,7 @@ const setupUI = (user) => {
         <div> <p class = "profile-headings"> Year </p>${doc.data().year}</div> <br>
         <div> <p class = "profile-headings"> Courses </p>${doc.data().courses}</div> <br>
         <div><p class = "profile-headings"> Bio </p>${doc.data().bio}</div>
-        <div><p class = "profile-headings"> Points </p>${doc.data().points}</div>
+        <div><p class = "profile-headings"> Points (Coming Soon. Earn points as you complete your to do list.) </p>${doc.data().points}</div>
       `;
       accountDetails.innerHTML = html;
 
@@ -272,7 +272,6 @@ const setupTodolist = (data) => {
       span.appendChild(txt);
       myNodelist[i].appendChild(span);
     }
-    
     // Click on a close button to hide the current list item
     var close = document.getElementsByClassName("close");
     var i;
@@ -282,7 +281,6 @@ const setupTodolist = (data) => {
         div.style.display = "none";
       }
     }
-
   } else {
     todoList.innerHTML = '<h5 class="center-align">You should not be here</h5>';
   }
